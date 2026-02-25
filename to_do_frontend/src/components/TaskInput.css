@@ -1,0 +1,45 @@
+.TaskInput {
+  display: grid;
+  gap: 10px;
+}
+
+.TaskInput__label {
+  font-weight: 700;
+  color: var(--retro-text);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.TaskInput__row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.TaskInput__field {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 2px solid var(--retro-border);
+  background: rgba(0, 0, 0, 0.28);
+  color: var(--retro-text);
+  outline: none;
+  font-family: var(--retro-font);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.TaskInput__field:focus {
+  border-color: rgba(6, 182, 212, 0.8);
+  box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.TaskInput__field::placeholder {
+  color: rgba(235, 245, 255, 0.55);
+}
+
+.TaskInput__hint {
+  font-size: 12px;
+  color: rgba(235, 245, 255, 0.72);
+}

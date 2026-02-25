@@ -1,0 +1,67 @@
+.TaskList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.TaskList__state {
+  border: 2px dashed rgba(255, 255, 255, 0.22);
+  border-radius: 18px;
+  padding: 18px 16px;
+  background: rgba(0, 0, 0, 0.18);
+  color: rgba(235, 245, 255, 0.92);
+  display: grid;
+  gap: 6px;
+  place-items: center;
+  text-align: center;
+}
+
+.TaskList__state--error {
+  border-style: solid;
+  border-color: rgba(239, 68, 68, 0.55);
+}
+
+.TaskList__stateTitle {
+  font-weight: 900;
+  letter-spacing: 0.6px;
+}
+
+.TaskList__stateDesc {
+  color: rgba(235, 245, 255, 0.75);
+  font-size: 13px;
+  max-width: 42ch;
+}
+
+.TaskList__loader {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: 3px solid rgba(235, 245, 255, 0.18);
+  border-top-color: rgba(59, 130, 246, 0.9);
+  animation: TaskList-spin 0.9s linear infinite;
+  margin-bottom: 6px;
+}
+
+@keyframes TaskList-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.TaskList__retry {
+  margin-top: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(235, 245, 255, 0.95);
+  padding: 10px 14px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-family: var(--retro-font);
+  box-shadow: var(--retro-shadow);
+}
+
+.TaskList__retry:hover {
+  filter: brightness(1.05);
+}

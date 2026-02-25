@@ -1,104 +1,227 @@
-/* CSS Variables for Theme Management */
+/* Retro theme (plain CSS only) */
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
-}
+  --retro-font: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 
-[data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
-  --border-color: #404040;
-  --button-bg: #0056b3;
-  --button-text: #ffffff;
+  --retro-bg0: #070915;
+  --retro-bg1: #0b1024;
+  --retro-surface: rgba(255, 255, 255, 0.06);
+  --retro-surface2: rgba(255, 255, 255, 0.08);
+
+  --retro-text: #ecf5ff;
+  --retro-muted: rgba(236, 245, 255, 0.75);
+
+  --retro-accent: #3b82f6;
+  --retro-accent2: #06b6d4;
+
+  --retro-border: rgba(255, 255, 255, 0.16);
+  --retro-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+
+  --retro-maxw: 980px;
 }
 
 .App {
-  text-align: center;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  color: var(--retro-text);
+  font-family: var(--retro-font);
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(59, 130, 246, 0.35), transparent 60%),
+    radial-gradient(900px 500px at 90% 10%, rgba(6, 182, 212, 0.25), transparent 55%),
+    linear-gradient(180deg, var(--retro-bg0), var(--retro-bg1));
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.RetroShell {
+  max-width: var(--retro-maxw);
+  margin: 0 auto;
+  padding: 22px 16px 40px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: var(--bg-secondary);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.RetroHeader {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--text-primary);
-  transition: background-color 0.3s ease;
-  position: relative;
+  padding: 14px 14px;
+  border: 2px solid var(--retro-border);
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.20);
+  box-shadow: var(--retro-shadow);
+  backdrop-filter: blur(10px);
 }
 
-.App-link {
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
+.RetroHeader__brand {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: center;
+  min-width: 0;
 }
 
-.theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.RetroHeader__logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  letter-spacing: 0.8px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.95), rgba(6, 182, 212, 0.95));
+  color: #08101c;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28);
 }
 
-.theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
+.RetroHeader__title {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.1;
+  letter-spacing: 0.2px;
 }
 
-.theme-toggle:active {
-  transform: translateY(0);
+.RetroHeader__subtitle {
+  margin: 4px 0 0 0;
+  color: var(--retro-muted);
+  font-size: 13px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.RetroHeader__stats {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.StatPill {
+  border: 2px solid var(--retro-border);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 10px 12px;
+  min-width: 92px;
+  box-shadow: var(--retro-shadow);
+}
+
+.StatPill__k {
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: 900;
+  color: rgba(236, 245, 255, 0.7);
+}
+
+.StatPill__v {
+  margin-top: 2px;
+  font-size: 18px;
+  font-weight: 900;
+  color: rgba(236, 245, 255, 0.95);
+}
+
+.RetroMain {
+  margin-top: 16px;
+  display: grid;
+  gap: 14px;
+}
+
+.Card {
+  border: 2px solid var(--retro-border);
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.18);
+  padding: 14px;
+  box-shadow: var(--retro-shadow);
+}
+
+.Card--tight {
+  padding: 12px;
+}
+
+.Card--list {
+  padding: 12px;
+}
+
+.Card__row {
+  display: grid;
+  gap: 10px;
+}
+
+.Card__label {
+  font-weight: 900;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: rgba(236, 245, 255, 0.85);
+}
+
+.Banner {
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  border: 2px solid rgba(6, 182, 212, 0.35);
+  background: rgba(6, 182, 212, 0.12);
+  color: rgba(236, 245, 255, 0.95);
+  box-shadow: var(--retro-shadow);
+}
+
+.Banner__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.95), rgba(6, 182, 212, 0.95));
+  box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.12);
+}
+
+.ErrorBar {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 10px 12px;
+  border-radius: 16px;
+  border: 2px solid rgba(239, 68, 68, 0.55);
+  background: rgba(239, 68, 68, 0.10);
+  color: rgba(236, 245, 255, 0.95);
+  box-shadow: var(--retro-shadow);
+}
+
+.ErrorBar__title {
+  font-weight: 900;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.ErrorBar__msg {
+  color: rgba(236, 245, 255, 0.85);
+  font-size: 13px;
+}
+
+.RetroFooter {
+  margin-top: 8px;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: rgba(236, 245, 255, 0.7);
+  font-size: 12px;
+}
+
+.RetroFooter code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
+  color: rgba(236, 245, 255, 0.9);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+@media (max-width: 860px) {
+  .RetroHeader {
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 16px;
-    font-size: 12px;
+  .RetroHeader__stats {
+    justify-content: flex-start;
   }
 }
