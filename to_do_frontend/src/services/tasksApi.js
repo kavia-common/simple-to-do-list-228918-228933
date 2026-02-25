@@ -98,7 +98,11 @@ async function request(path, { method = "GET", body, signal } = {}) {
 export async function listTasks({ filter = "all", signal } = {}) {
   /** List tasks, optionally filtered by all|active|completed. */
   const qs = new URLSearchParams();
-  if (filter && filter !== "all") qs.set("filter", filter);
+
+  // Backend expects `status=all|active|completed` (see OpenAPI /tasks?status=...).
+  // We keep the frontend API as `filter` for UI semantics and translate here.
+  if (filter) qs.set("status", filter);
+
   const q = qs.toString() ? `?${qs.toString()}` : "";
   return request(`${getTasksBasePath()}${q}`, { method: "GET", signal });
 }
